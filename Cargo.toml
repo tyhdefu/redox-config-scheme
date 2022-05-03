@@ -1,0 +1,29 @@
+[package]
+name = "config_scheme_redox"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "config_scheme"
+path = "src/scheme.rs"
+
+[[bin]]
+name = "config"
+path = "src/client.rs"
+
+[dependencies]
+redox_syscall = "^0.2.11"
+indextree = "4.4.0"
+clap = { version = "3.1.15", features = ["derive"] }
+
+# Just copying redox fs for ease
+# https://github.com/rexlunae/simple-endian-rs/pull/5
+[dependencies.redox_simple_endian]
+version = "0.2.1"
+default-features = false
+features = [
+    "bitwise", "comparisons", "format", "math_ops", "neg_ops", "shift_ops",
+    "both_endian", "float_impls", "integer_impls", "byte_impls"
+]
